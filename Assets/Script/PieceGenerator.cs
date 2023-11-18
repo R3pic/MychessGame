@@ -53,5 +53,7 @@ public class PieceGenerator : MonoBehaviour
         Piece tmpPiece = Instantiate(Pieces[(int)pieceType], board[x, y].transform.position, Quaternion.identity).GetComponent<Piece>();
         tmpPiece.Init(x, y, tmpPiece.pieceName, board);
         board[x, y].SetPiece(tmpPiece);
+        tmpPiece.name = pieceType.ToString()+x;
+        tmpPiece.transform.SetParent(transform);
     }
 }

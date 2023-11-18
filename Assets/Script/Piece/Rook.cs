@@ -8,12 +8,9 @@ public class Rook : Piece
     {
         pieceName = "Rook";
     }
-    protected override void Move()
-    {
-        
-    }
 
-    public override void ShowPossibleMove()
+    protected override List<Cell> GetPossibleMoves()
     {
+        throw new System.NotImplementedException();
     }
 }

@@ -8,11 +8,9 @@ public class Knight : Piece
     {
         pieceName = "Knight";
     }
-    protected override void Move()
-    {
-    }
 
-    public override void ShowPossibleMove()
+    protected override List<Cell> GetPossibleMoves()
     {
+        throw new System.NotImplementedException();
     }
 }

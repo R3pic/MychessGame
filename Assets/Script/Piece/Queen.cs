@@ -8,13 +8,10 @@ public class Queen : Piece
     {
         pieceName = "Queen";
     }
-    protected override void Move()
+
+    protected override List<Cell> GetPossibleMoves()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    public override void ShowPossibleMove()
-    {
-        
-    }
 }

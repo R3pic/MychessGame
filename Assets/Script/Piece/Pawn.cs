@@ -4,42 +4,63 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
-
+    [SerializeField]
+    bool isFirstMove;
     private void Awake()
     {
         pieceName = "Pawn";
-    }
-    protected override void Move()
-    {
-
+        isFirstMove = true;
     }
 
-    public override void ShowPossibleMove()
+    protected override List<Cell> GetPossibleMoves()
     {
-        List<Cell> possibleMoves = GetPossibleMoves();
-        foreach (Cell cell in possibleMoves)
+        List<Cell> possibleMoves = new();
+
+        if(team == ChessTeam.black)
         {
-            cell.GetComponent<SpriteRenderer>().color = Color.green;
+            if (isFirstMove)
+            {
+                AddPossibleMove(possibleMoves, locX, locY - 2);
+            }
+            AddPossibleMove(possibleMoves, locX, locY - 1);
+
+            AddPossibleKillMove(possibleMoves, locX + 1, locY - 1);
+            AddPossibleKillMove(possibleMoves, locX - 1, locY - 1);
         }
-                    
-    }
-
-    private List<Cell> GetPossibleMoves()
-    {
-        List<Cell> possibleMoves = new List<Cell>();
-
-        // 폰이 앞으로 한 칸 이동할 수 있는 경우
-        if (IsCellValid(locX , locY + 1))
+        else if(team == ChessTeam.white)
         {
-            possibleMoves.Add(board[locX, locY + 1]);
-        }
+            if(isFirstMove)
+            {
+                AddPossibleMove(possibleMoves, locX, locY + 2);
+            }
+            AddPossibleMove(possibleMoves, locX, locY + 1);
 
-        // 시작 위치에서 폰이 앞으로 두 칸 이동할 수 있는 경우 (예: 폰이 2번째 라인에 있을 때)
-        if (locY == 1 && IsCellValid(locX, locY+2))
-        {
-            possibleMoves.Add(board[locX, locY + 2]);
+            AddPossibleKillMove(possibleMoves, locX+1, locY+1);
+            AddPossibleKillMove(possibleMoves, locX - 1, locY + 1);
         }
 
         return possibleMoves;
+    }
+
+    public override void Move(Cell cell)
+    {
+        base.Move(cell);
+        isFirstMove = false;
+    }
+
+    protected override void AddPossibleMove(List<Cell> moves, int x, int y)
+    {
+        if (IsCellValid(x, y) && !board[x, y].hasCurrentPiece())
+        {
+            moves.Add(board[x, y]);
+        }
+    }
+
+    protected override void AddPossibleKillMove(List<Cell> moves, int x, int y)
+    {
+        if (IsCellValid(x, y) && board[x, y].hasCurrentPiece() && board[x, y].GetPiece().GetTeam() != team)
+        {
+            moves.Add(board[x, y]);
+        }
     }
 }

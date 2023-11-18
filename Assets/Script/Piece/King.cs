@@ -8,14 +8,20 @@ public class King : Piece
     {
         pieceName = "King";
     }
-    protected override void Move()
+    protected override List<Cell> GetPossibleMoves()
     {
-     
-    }
+        List<Cell> possibleMoves = new();
 
-    public override void ShowPossibleMove()
-    {
-       
+        AddPossibleMove(possibleMoves, locX - 1, locY + 1);
+        AddPossibleMove(possibleMoves, locX, locY + 1);
+        AddPossibleMove(possibleMoves, locX + 1, locY + 1);
+        AddPossibleMove(possibleMoves, locX - 1, locY);
+        AddPossibleMove(possibleMoves, locX + 1, locY);
+        AddPossibleMove(possibleMoves, locX - 1, locY - 1);
+        AddPossibleMove(possibleMoves, locX, locY - 1);
+        AddPossibleMove(possibleMoves, locX + 1, locY - 1);
+
+        return possibleMoves;
     }
 
 }
