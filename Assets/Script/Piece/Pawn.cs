@@ -18,7 +18,7 @@ public class Pawn : Piece
 
         if(team == ChessTeam.black)
         {
-            if (isFirstMove)
+            if (isFirstMove && !board[locX, locY - 1].hasCurrentPiece())
             {
                 AddPossibleMove(possibleMoves, locX, locY - 2);
             }
@@ -29,7 +29,7 @@ public class Pawn : Piece
         }
         else if(team == ChessTeam.white)
         {
-            if(isFirstMove)
+            if(isFirstMove && !board[locX, locY+1].hasCurrentPiece())
             {
                 AddPossibleMove(possibleMoves, locX, locY + 2);
             }

@@ -11,6 +11,16 @@ public class Knight : Piece
 
     protected override List<Cell> GetPossibleMoves()
     {
-        throw new System.NotImplementedException();
+        List<Cell> possibleMoves = new();
+
+        AddPossibleMove(possibleMoves, locX - 1, locY + 2);
+        AddPossibleMove(possibleMoves, locX + 1, locY + 2);
+        AddPossibleMove(possibleMoves, locX + 2, locY + 1);
+        AddPossibleMove(possibleMoves, locX + 2, locY - 1);
+        AddPossibleMove(possibleMoves, locX + 1, locY - 2);
+        AddPossibleMove(possibleMoves, locX - 1, locY - 2);
+        AddPossibleMove(possibleMoves, locX - 2, locY - 1);
+        AddPossibleMove(possibleMoves, locX - 2, locY + 1);
+        return possibleMoves;
     }
 }
