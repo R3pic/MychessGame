@@ -9,6 +9,7 @@ using TMPro;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [Header("DisconnectPanel")]
+    public GameObject LoginPanel;
     public TMP_InputField NickNameInput;
 
     [Header("LobbyPanel")]
@@ -162,7 +163,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC] // RPC는 플레이어가 속해있는 방 모든 인원에게 전달한다
-    void ChatRPC(string msg)
+    public void ChatRPC(string msg)
     {
         bool isInput = false;
         for (int i = 0; i < ChatText.Length; i++)

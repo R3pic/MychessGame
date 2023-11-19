@@ -40,6 +40,11 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ChatRPC
+  - Move
+  - MovePiece
+  - StartGame
+  - InitializeTeam
+  - SwitchTurn
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

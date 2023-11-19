@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pawn : Piece
 {
     [SerializeField]
-    bool isFirstMove;
+    public bool isFirstMove;
     private void Awake()
     {
         pieceName = "Pawn";

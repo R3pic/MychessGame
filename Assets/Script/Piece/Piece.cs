@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,7 +65,7 @@ public abstract class Piece : MonoBehaviour
         transform.position = cell.transform.position;
     }
 
-    public virtual void ShowPossibleMove()
+public virtual void ShowPossibleMove()
     {
         List<Cell> possibleMoves = GetPossibleMoves();
         foreach (Cell cell in possibleMoves)

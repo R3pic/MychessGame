@@ -26,4 +26,21 @@ public class Board : MonoBehaviour
     {
         return board;
     }
+
+    public Piece GetPieceAt(int x, int y)
+    {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8)
+        {
+            return board[x, y].GetPiece();
+        }
+        return null;
+    }
+
+    public void SetPieceAt(int x, int y, Piece piece)
+    {
+        if (x >= 0 && x < 8 && y >= 0 && y < 8)
+        {
+            board[x, y].SetPiece(piece);
+        }
+    }
 }
